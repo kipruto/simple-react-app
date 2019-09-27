@@ -2,11 +2,8 @@ import React from 'react'
 import Table from './Table'
 
 class App extends React.Component {
-
-    render() {
-
-        /* Bring the data here as an array of objects */
-        const people = [
+    state = {
+        people: [
             {
                 name: 'Charlie',
                 job: 'Janitor',
@@ -23,7 +20,12 @@ class App extends React.Component {
                 name: 'Dennis',
                 job: 'Bartender',
             },
-        ]
+        ],
+    };
+
+    render() {
+
+        const { people } = this.state;
 
         return (
             /* pass the data through tyhe child component(Table) with properties */
