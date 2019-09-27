@@ -11,20 +11,17 @@ const TableHeader = () => {
     )
 }
 
-/* pass the props through as parameters and map through the array to return
-a table row for each object in the array */
 const TableBody = props => {
-    const rows = props.peopleData.map((row, index)=>{
+    const rows = props.peopleData.map((row, index) => {
         return (
             <tr key={index}>
                 <td>{row.name}</td>
                 <td>{row.job}</td>
             </tr>
-        )
-    })
-    return (
-        <tbody>{rows}</tbody>
-    )
+        );
+    });
+
+    return <tbody>{rows}</tbody>;
 }
 
 class Table extends Component {
