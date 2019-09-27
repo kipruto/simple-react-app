@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-/* A simple component, which is a function that does not use class keyword */
 const TableHeader = () => {
     return (
         <thead>
@@ -12,36 +11,30 @@ const TableHeader = () => {
     )
 }
 
-/* simple component */
-const TableBody = () => {
+/* pass the props through as parameters and map through the array to return
+a table row for each object in the array */
+const TableBody = props => {
+    const rows = props.peopleData.map((row, index)=>{
+        return (
+            <tr key={index}>
+                <td>{row.name}</td>
+                <td>{row.job}</td>
+            </tr>
+        )
+    })
     return (
-        <tbody>
-            <tr>
-                <td>Charlie</td>
-                <td>Janitor</td>
-            </tr>
-            <tr>
-                <td>Mac</td>
-                <td>Bouncer</td>
-            </tr>
-            <tr>
-                <td>Dee</td>
-                <td>Aspiring actress</td>
-            </tr>
-            <tr>
-                <td>Dennis</td>
-                <td>Bartender</td>
-            </tr>
-        </tbody>
+        <tbody>{rows}</tbody>
     )
 }
 
 class Table extends Component {
     render() {
+        /* Access the table data from this side using props */
+        const { peopleData } = this.props
         return (
             <table>
                 <TableHeader />
-                <TableBody />
+                <TableBody peopleData={peopleData} />
             </table>
         )
     }
